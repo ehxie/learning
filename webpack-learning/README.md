@@ -19,6 +19,12 @@
 - webpack 工作模式的配置（产物是否进行编译优化）
 - 如何让 webpack 配置文件有代码提示
 
+[02-loader](/webpack-learning/02-loader/README.md)
+
+- 介绍 loader 的作用
+- 如何找到 loader 支持的 webpack 版本
+- loader 加载顺序
+
 # 前置知识
 
 ## 解决问题

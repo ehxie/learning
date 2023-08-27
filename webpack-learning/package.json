@@ -4,12 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:start": "webpack --config ./01-start/webpack.config.js"
+    "build:start": "webpack --config ./01-start/webpack.config.js",
+    "build:loader": "webpack --config ./02-loader/webpack.config.js",
+    "build:loaderCustom": "webpack --config ./03-loader-custom/webpack.config.js",
+    "test": ""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^4.3.0",
+    "marked": "^7.0.5",
+    "style-loader": "^2.0.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   }
