@@ -1,6 +1,7 @@
 // 配置文件类型提示，编写配置时打开可以有提示
-// import { Configuration } from 'webpack'
 const path = require('path')
+
+/** @typedef {import("webpack").Configuration} Configuration */
 
 /**
  * @type {Configuration}

@@ -124,8 +124,7 @@ npm run build:start
 
 ```js
 
-// 配置文件类型提示，编写配置时打开可以有提示
-// import { Configuration } from 'webpack'
+/** @typedef {import("webpack").Configuration} Configuration */
 
 /**
  * @type {Configuration}
