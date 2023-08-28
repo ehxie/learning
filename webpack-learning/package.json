@@ -7,13 +7,18 @@
     "build:start": "webpack --config ./01-start/webpack.config.js",
     "build:loader": "webpack --config ./02-loader/webpack.config.js",
     "build:loaderCustom": "webpack --config ./03-loader-custom/webpack.config.js",
+    "build:plugin": "webpack --config ./04-plugin/webpack.config.js",
+    "build:pluginCustom": "webpack --config ./05-plugin-custom/webpack.config.js",
     "test": ""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^5.1.2",
     "css-loader": "^4.3.0",
+    "html-webpack-plugin": "^4.5.2",
     "marked": "^7.0.5",
     "style-loader": "^2.0.0",
     "webpack": "^4.46.0",

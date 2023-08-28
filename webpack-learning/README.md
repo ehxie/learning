@@ -25,6 +25,18 @@
 - 如何找到 loader 支持的 webpack 版本
 - loader 加载顺序
 
+[03-loader-custom](/webpack-learning/03-loader-custom/README.md)
+
+- 自定义一个 markdown loader 了解 loader 机制
+
+[04-plugin](/webpack-learning/04-plugin/READMD.md)
+
+- 了解 webpack 以及体验常用的插件
+
+[05-plugin-custom](/webpack-learning/05-plugin-custom/README.md)
+
+- 自定义一个插件，了解插件的机制和原理
+
 # 前置知识
 
 ## 解决问题
@@ -226,3 +238,7 @@ require(['./modules/module1.js'], function(module1) {
 - 可以处理不同种类的模块(`.js`、`.css`、`.less`、`.png` 等等资源文件)
 
 webpack 就能满足上面的模块打包
+
+# 参考
+
+[B站讲的最好的Webpack原理与实践](https://www.bilibili.com/video/BV1Ju41117TD?p=4&vd_source=e26f2011a16ecc33e81c886261d5a3c6)
