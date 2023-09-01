@@ -1,0 +1,69 @@
+#!/usr/bin/env sh
+
+# 修改配置后需要 source <配置文件> 后才能生效
+# 更多配置: https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc
+
+# 焦点
+## 焦点跟随鼠标 默认off: 关闭  autoraise:自动提升 autofocus: 自动对焦
+yabai -m config focus_follows_mouse          autofocus
+## 设置鼠标是否跟随当前活动窗口 默认 off: 关闭 on: 开启
+yabai -m config mouse_follows_focus          on
+
+# 浮动窗口在最顶部
+yabai -m config window_topmost               on
+# 窗口阴影 on | off | float
+yabai -m config window_shadow on
+
+# 窗口透明度设置
+## 开启透明度配置
+yabai -m config window_opacity               on
+## 配置获取焦点的窗口的透明度
+yabai -m config active_window_opacity        1.0             
+## 配置失去焦点窗口的透明度
+yabai -m config normal_window_opacity        0.9
+## 透明度过渡的时间
+yabai -m config window_opacity_duration      0.0
+
+# 窗口布局配置
+## 窗口布局 bsp: 平铺 float: 浮动
+yabai -m config layout                       bsp
+# 窗口间距设置
+yabai -m config top_padding                  5
+yabai -m config bottom_padding               5
+yabai -m config left_padding                 5
+yabai -m config right_padding                5
+yabai -m config window_gap                   2
+## 分割窗口类型 vertical: 垂直 horizontal: 水平 auto: 取决于宽高比
+yabai -m config  split_type                  auto
+## 打开新窗口时往哪拆分(水平分割/垂直分割)  first_child: 左边/上边 second_child: 右边/下边
+yabai -m config window_placement             second_child
+
+# 配置窗口边框
+## 是否绘制边框
+yabai -m config window_border               on
+## 高分辨率的情况下绘制边框
+yabai -m config window_border_hidpi         on
+# 选中的窗口的颜色
+yabai -m config active_window_border_color  0xff5bae23 # 鹦鹉绿
+## 没有选中的窗口的颜色
+yabai -m config normal_window_border_color  0x88cfccc9
+## 边框宽度
+yabai -m config window_border_width         5
+## 边框圆角
+yabai -m config window_border_radius        12
+## 边框模糊
+yabai -m config window_border_blur          on
+
+# 自动平衡所有窗口始终占据相同的空间
+yabai -m config auto_balance                 off
+# 如果禁用自动平衡，此项属性定义的是新窗口占用的空间量。0.5意为旧窗口占用50%
+yabai -m config split_ratio                 0.50
+
+# 修饰键
+## 鼠标修饰键 意思就是按着这个键就可以使用鼠标单独修改窗口大小了
+yabai -m config mouse_modifier               fn
+# fn + 左键 移动
+yabai -m config mouse_action1                move
+# fn + 右键 
+yabai -m config mouse_action2                resize
+
