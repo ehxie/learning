@@ -37,6 +37,10 @@
 
 - 自定义一个插件，了解插件的机制和原理
 
+[08-core](/webpack-learning/06-core/READMD.md)
+
+- source map 介绍
+
 # 前置知识
 
 ## 解决问题
