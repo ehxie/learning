@@ -8,6 +8,12 @@
 - 可与其他语言(例如 Java)通信
 - 跨平台
 
+## 目录结构
+
+[base](/kotlin/base/)
+
+- kotlin 基础语法(适合有其他语言基础的同学快速掌握 kotlin)
+
 ## 参考
 
 <https://www.bilibili.com/video/BV15N411A7P8/?p=3&spm_id_from=pageDriver&vd_source=e26f2011a16ecc33e81c886261d5a3c6>
