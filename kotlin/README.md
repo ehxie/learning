@@ -14,6 +14,10 @@
 
 - kotlin 基础语法(适合有其他语言基础的同学快速掌握 kotlin)
 
+[advanced](/kotlin/advanced)
+
+- 高级用法
+
 [vscode](/kotlin/vscode)
 
 - 在 VSCode 中使用 kotlin，体验其实并不好，还是使用官方推荐的 [IDE](https://kotlinlang.org/docs/kotlin-ide.html#what-s-next) 吧
