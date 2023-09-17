@@ -82,3 +82,14 @@ class A {
     }
 }
 ```
+
+## const 和 val
+
+const 是编译时常量
+val 是运行时常量
+
+```kotlin
+const val PI = 3.14159
+val radius = 5
+val area = PI * radius * radius
+```
