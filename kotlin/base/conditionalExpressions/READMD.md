@@ -64,6 +64,24 @@ main() {
 
 ```
 
+不带参数的写法
+
+- 能够有很强的扩展性
+
+```kotlin
+fun main() {
+    getScore("Tom")
+}
+
+// 所有 Tom 开头的同学都获得 90 分，这种场景就无法使用待参数的 when 实现
+fun getScore(name: String): Int = when {
+    name.startsWith("Tom") -> 90
+    name == "Jerry" -> 100
+    name == "Jack" -> 80
+    else -> 0
+}
+```
+
 ## in 和区间
 
 ```kotlin

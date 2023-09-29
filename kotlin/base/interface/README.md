@@ -64,3 +64,36 @@ interface B {
     var same: Int
 }
 ```
+
+## 面向接口编程
+
+面向接口编程也可以称为多态
+
+```kotlin
+open class Person(val name: String, val age: Int) {}
+
+interface Study {
+    fun readBooks()
+    fun doHomework()
+}
+
+class Student(name: String, age: Int): Person(name, age), Study {
+    override fun readBooks() {
+        println("${name} read books")
+    }
+    override fun doHomework() {
+        println("${name} do homework")
+    }
+}
+
+fun doStudy(study: Study) {
+    study.readBooks()
+    study.doHomework()
+}
+
+fun main() {
+    val student = Student("Tom", 18)
+    // 本来可以直接使用实例请调用对应的方法，但是这里没有这样做，而是使用接口来调用
+    doStudy(student)
+}
+```

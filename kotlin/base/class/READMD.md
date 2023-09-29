@@ -29,6 +29,12 @@ class A(p: Int) {
 
 ## 构造函数
 
+在构造函数中使用 val、var 修饰的属性会成为类的属性，在构造函数中初始化
+
+- 所以如果是继承的类，子类中不能使用 val 修饰的属性，因为这样就和父类的属性冲突了
+
+构造函数中没有用 val、var 修饰的属性，作用域只会在构造函数中
+
 ```kotlin
 // 多级构造函数
 class B(var a:Int) {
@@ -191,6 +197,63 @@ class Child: Parent() {
 
 ## 数据类
 
+MVC、MVVM、MVP 模式中的 M 指的就是数据类
+
+- 数据类通常需要重写 equals、hashCode、toString
+  - equals 用于比较两个对象是否相等
+  - hashCode 用于计算哈希值
+  - toString 用于打印对象信息
+
+java 中实现需要自己重写，而 kotlin 中使用 data 关键字，会自动增加 copy、equals、hashCode、toString 等方法
+
+### 和 java 对比
+
+创建一个 Cellphone 的手机数据类，只有品牌和价格这两个字段
+
+```java
+public class CellPhone {
+    private String brand;
+    private double price;
+
+    public CellPhone(String brand, double price) {
+        this.brand = brand;
+        this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof CellPhone) {
+            CellPhone cellPhone = (CellPhone) o;
+            return cellPhone.brand.equals(brand) && cellPhone.price.equals(price);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return brand.hashCode() + (int) price;
+    }
+
+    @Override
+    public String toString() {
+        return "CellPhone{" +
+        "brand='" + brand + '\'' +
+        ", price=" + price +
+        '}';
+    }
+}
+```
+
+kotlin 中使用 data 关键字，实现起来就很简单了
+
+- 尾部没有代码时还可以把大括号省略了
+
+```kotlin
+data class CellPhone(val brand: String, val price: Double)
+```
+
+### 其他例子
+
 ```kotlin
 // 使用 data  关键字声明
 // 必须要有成员变量
@@ -210,8 +273,6 @@ fun main() {
     const a1 = a.copy("xx")
 }
 ```
-
-会自动增加 copy、toString 等方法
 
 ## 伴生对象
 
@@ -325,6 +386,8 @@ fun main() {
 ## object 关键字
 
 ### 单例
+
+Java 中定义工具类中方法都是使用 static 修饰，而 Kotlin 中没有 static 关键字，可以使用 object 关键字来定义单例
 
 ```kotlin
 fun main() {
