@@ -435,8 +435,59 @@ fun request(callback: JavaInterface) {
 
 ## 密封类
 
+解决写 when 操作时总是需要写 else，否则编译器会报错
+
+- 如果条件是可枚举的，那么当我们新增一个条件后可能忘记修改 when 语句，导致运行时报错，这时候就可以用 密封类 来解决
+
 密封类 = 抽象类 + 枚举
 密封接口 = 接口 + 枚举
+
+> 密封类以及其所有子类只能定义在同一个文件的顶层位置，不能嵌套在其他类中
+
+e.g.：返回状态
+
+实现对放回状态的处理
+
+1.定义返回状态
+
+```kotlin
+interface Result
+class Success(val msg: String): Result
+class Failure(val error: Exception): Result
+```
+
+2.定义处理返回状态的方法
+
+```kotlin
+fun getResult(result: Result) = when(result) {
+    is Success -> println("成功 ${result.msg}")
+    is Failure -> println("失败 ${result.error.message}")
+    else -> throw IllegalArgumentException()
+}
+
+上面代码看似没什么问题，但是 else 条件存在一个潜在的风险。当新增一个 Unknown 类型并实现 Result 接口时，编译器不会报错，但是当调用 getResult 方法时，会抛出异常
+- 编译器不会提醒我们需要新增一个 when 条件
+- 密封类就很好的解决了这个问题
+
+定义密封类
+
+```kotlin
+sealed class Result 
+class Success(val msg: String): Result()
+class Failure(val error: Exception): Result()
+```
+
+修改 getResult 方法
+
+```kotlin
+fun getResult(result: Result) = when(result) {
+    is Success -> println("成功 ${result.msg}")
+    is Failure -> println("失败 ${result.error.message}")
+}
+```
+
+- 可以看到此时没有 else 条件也不会报错，Kotlin 会强制要求我们处理所有密封类中的子类，所以不会出现漏了的情况
+- 所以当新增一个 Unknown 类型并实现 Result 接口时，编译器会报错
 
 e.g.: MVI 架构（登录退出）
 
