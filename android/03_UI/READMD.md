@@ -896,7 +896,7 @@ class MsgAdapter(private val msgList: List<Msg>) : RecyclerView.Adapter<Recycler
 class MainActivity : AppCompatActivity() {
     private val TAG = this::class.java.toString()
     private val msgList = ArrayList<Msg>()
-    private var msgAdapter: MsgAdapter? = null
+    private lateinit var msgAdapter: MsgAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -911,7 +911,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
 
         // 绑定适配器
-        msgAdapter = MsgAdapter(msgList)
+        // 如果是全局变量还可以使用 isInitialized 判断是否初始化，这样可以有效避免对一个变量重复初始化
+        if(!::msgAdapter.isInitialized) {
+            msgAdapter = MsgAdapter(msgList)
+        }
         recyclerView.adapter = msgAdapter
 
 
@@ -925,7 +928,7 @@ class MainActivity : AppCompatActivity() {
                 val msg = Msg(content, Msg.TYPE_SENT)
                 msgList.add(msg)
                 /// 当有新消息时刷新 RecyclerView 中的显示
-                msgAdapter?.notifyItemInserted(msgList.size - 1)
+                msgAdapter.notifyItemInserted(msgList.size - 1)
                 // 将 RecyclerView 定位到最后一行
                 recyclerView.scrollToPosition(msgList.size - 1)
                 // 清空输入框内容
