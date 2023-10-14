@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 # 修改配置后需要 source <配置文件> 后才能生效
+# 重启电脑后需要 sudo yabai --load-sa 才能正常工作
 # 更多配置: https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc
 
 # 焦点
@@ -10,9 +11,10 @@ yabai -m config focus_follows_mouse          autofocus
 yabai -m config mouse_follows_focus          on
 
 # 浮动窗口在最顶部
-yabai -m config window_topmost               on
+# yabai -m config window_topmost               on
+# yabai -m config window_topmost on
 # 窗口阴影 on | off | float
-yabai -m config window_shadow on
+yabai -m config window_shadow                on
 
 # 窗口透明度设置
 ## 开启透明度配置
@@ -20,7 +22,7 @@ yabai -m config window_opacity               on
 ## 配置获取焦点的窗口的透明度
 yabai -m config active_window_opacity        1.0             
 ## 配置失去焦点窗口的透明度
-yabai -m config normal_window_opacity        0.9
+yabai -m config normal_window_opacity        0.6
 ## 透明度过渡的时间
 yabai -m config window_opacity_duration      0.0
 
@@ -39,20 +41,21 @@ yabai -m config  split_type                  auto
 yabai -m config window_placement             second_child
 
 # 配置窗口边框
+# 作者在 6.0 把窗口边框删除了tmd：https://github.com/koekeishiya/yabai/issues/1889
 ## 是否绘制边框
-yabai -m config window_border               on
+# yabai -m config window_border               on
 ## 高分辨率的情况下绘制边框
-yabai -m config window_border_hidpi         on
+# yabai -m config window_border_hidpi         on
 # 选中的窗口的颜色
-yabai -m config active_window_border_color  0xff5bae23 # 鹦鹉绿
+# yabai -m config active_window_border_color  0xff5bae23 # 鹦鹉绿
 ## 没有选中的窗口的颜色
-yabai -m config normal_window_border_color  0x88cfccc9
+# yabai -m config normal_window_border_color  0x88cfccc9
 ## 边框宽度
-yabai -m config window_border_width         5
+# yabai -m config window_border_width         5
 ## 边框圆角
-yabai -m config window_border_radius        12
+# yabai -m config window_border_radius        12
 ## 边框模糊
-yabai -m config window_border_blur          on
+# yabai -m config window_border_blur          on
 
 # 自动平衡所有窗口始终占据相同的空间
 yabai -m config auto_balance                 off
@@ -66,4 +69,13 @@ yabai -m config mouse_modifier               fn
 yabai -m config mouse_action1                move
 # fn + 右键 
 yabai -m config mouse_action2                resize
+
+# 不管理的应用
+yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add app="^系统偏好设置$" manage="off"
+yabai -m rule --add app="^访达$" manage="off"
+yabai -m rule --add app="^关于本机$" manage="off"
+yabai -m rule --add app="^Microsoft Outlook$" manage="off"
+yabai -m rule --add app="^如流$" manage="off"
 
