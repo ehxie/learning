@@ -23,7 +23,7 @@ fun <T> add(a:T, b:T) = a + b
 
 // 多参数
 fun sum(vararg list:String) {
-    
+
 }
 val arr = arrayOf("1", "2", "3")
 // * 相当于 js 中的 `...` 扩展运算符
@@ -37,10 +37,11 @@ main() {
     println(1.sum(2))
 
     println(1 add 2)
-    println(1.2f add 2)    
+    println(1.2f add 2)
 }
 
 // 扩展函数
+//  可以在不修改源码的情况下，为类添加新的方法（反编译为 Java 后可以发现其是用静态方法实现的）
 fun Int.sum(a: Int) = this + a
 
 // infix
