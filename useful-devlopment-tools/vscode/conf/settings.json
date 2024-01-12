@@ -1,0 +1,115 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "always",
+    "source.fixAll.eslint": "always"
+  },
+  "eslint.validate": [
+    "javascriptreact",
+    "html",
+    "vue",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.rulers": [80],
+  "prettier.tabWidth": 2,
+  "eslint.codeActionsOnSave.mode": "all",
+  // 光标移动更加丝滑
+  // "editor.cursorBlinking": "smooth",
+  // "editor.cursorSmoothCaretAnimation": "on",
+  // vim
+  // vscode 相关 commands: https://vscode-docs.readthedocs.io/en/stable/customization/keybindings/
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["lineBreakInsert"],
+      "silent": true
+    },
+    // 行首
+    {
+      "before": ["L"],
+      "after": ["$"]
+    },
+    // 行尾
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    // 跳转到 terminal
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.terminal.focus"]
+    },
+    // 返回
+    {
+      "before": ["g", "j"],
+      "commands": ["workbench.action.navigateBack"]
+    },
+    // 切换到左边的tab
+    {
+      "before": ["<leader>", "h"],
+      "commands": [":tabp"]
+    },
+    // 切换到右边的tab
+    {
+      "before": ["<leader>", "l"],
+      "commands": [":tabn"]
+    },
+    // 跳转到下一个 error 位置
+    {
+      "before": ["g", "e"],
+      "commands": ["editor.action.marker.next"]
+    },
+    // 跳转到上一个 error 位置
+    {
+      "before": ["g", "E"],
+      "commands": ["editor.action.marker.next"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    // 配置 H 和 L 让其在 visual 模式下也和 normal 模式下行为一致
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["$"]
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  // 控制光标经过折叠代码区域时，代码是否会自动展开，true 表示不自动展开
+  "vim.foldfix": true,
+  // vim config end
+  "window.commandCenter": false,
+  "workbench.colorCustomizations": {
+    // 光标颜色
+    "editorCursor.foreground": "#16C60C",
+    // 光标所在行颜色
+    "editor.lineHighlightBackground": "#292E42"
+  }
+  // vim"
+}

@@ -1,0 +1,63 @@
+
+// Place your key bindings in this file to override the defaults
+[
+  // 新建文件
+  {
+      "key": "a",
+      "command": "explorer.newFile",
+      "when": "filesExplorerFocus && !inputFocus"
+  },
+  // 新建文件夹
+  {
+      "key": "shift+a",
+      "command": "explorer.newFolder",
+      "when": "filesExplorerFocus && !inputFocus"
+  },
+  // 重命名
+  {
+      "key": "r",
+      "command": "renameFile",
+      "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  // 删除文件
+  {
+      "key": "d",
+      "command": "deleteFile",
+      "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  // 剪切文件或目录
+  {
+      "key": "x",
+      "command": "filesExplorer.cut",
+      "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  // 复制文件或目录
+  {
+      "key": "y",
+      "command": "filesExplorer.copy",
+      "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+  },
+  // 粘贴文件或目录
+  {
+      "key": "p",
+      "command": "filesExplorer.paste",
+      "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  // 光标在切割窗口快速移动
+  {
+      "key": "ctrl+h",
+      "command": "workbench.action.navigateEditorGroups",
+      "args": {
+          "by": "left"
+      },
+      "when": "editorTextFocus"
+  },
+  {
+      "key": "ctrl+l",
+      "command": "workbench.action.navigateEditorGroups",
+      "args": {
+          "by": "right"
+      },
+      "when": "editorTextFocus"
+  }
+]
