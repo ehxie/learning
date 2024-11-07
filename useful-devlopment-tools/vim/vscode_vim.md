@@ -135,6 +135,11 @@ leader：前缀键，本文中设置为空格
   - 将提交到暂存区的代码撤销到工作区(Stage Change ---> Change)：与上面步骤一致，只是进入 visual 模式选中后，按 cmd + k 然后在按 cmd + n 即可
   - 将工作区的修改撤销(revert)：与上面步骤一致，只是进入 visual 模式选中后，按 cmd + k 然后在按 cmd + r 即可
 
+批量操作代码
+1. 包裹代码
+ - 安装 [surround](https://marketplace.visualstudio.com/items?itemName=yatki.vscode-surround) 插件，选中代码后，输入 cmd + shift + T
+ - 选中技巧：vip(选中段落)，V(行选中模式)
+
 ### 改键
 
 #### 修改 VSCode 快捷键绑定
