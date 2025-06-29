@@ -111,5 +111,10 @@
     // 光标所在行颜色
     "editor.lineHighlightBackground": "#292E42"
   }
+  // 借助 im-select 解决中英文转换问题，需要先 brew install im-select
+  "vim.autoSwitchInputMethod.enable": true,
+  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.US",
+  "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
+  "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}"
   // vim"
 }
