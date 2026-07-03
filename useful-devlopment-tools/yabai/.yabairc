@@ -2,7 +2,10 @@
 
 # 修改配置后需要 source <配置文件> 后才能生效
 # 重启电脑后需要 sudo yabai --load-sa 才能正常工作
-# 更多配置: https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc
+# 更多配置: yabai/doc/yabai.asciidoc at master · asmvik/yabai
+#
+# 搭配sketchybar 
+yabai -m config external_bar all:40:0
 
 # 焦点
 ## 焦点跟随鼠标 默认off: 关闭  autoraise:自动提升 autofocus: 自动对焦
@@ -22,26 +25,28 @@ yabai -m config window_opacity               on
 ## 配置获取焦点的窗口的透明度
 yabai -m config active_window_opacity        1.0             
 ## 配置失去焦点窗口的透明度
-yabai -m config normal_window_opacity        0.6
+yabai -m config normal_window_opacity        1.0
 ## 透明度过渡的时间
 yabai -m config window_opacity_duration      0.0
 
 # 窗口布局配置
-## 窗口布局 bsp: 平铺 float: 浮动
+# 窗口布局 bsp: 平铺 float: 浮动
 yabai -m config layout                       bsp
 # 窗口间距设置
 yabai -m config top_padding                  5
 yabai -m config bottom_padding               5
 yabai -m config left_padding                 5
 yabai -m config right_padding                5
-yabai -m config window_gap                   2
+yabai -m config window_gap                   8
 ## 分割窗口类型 vertical: 垂直 horizontal: 水平 auto: 取决于宽高比
 yabai -m config  split_type                  auto
 ## 打开新窗口时往哪拆分(水平分割/垂直分割)  first_child: 左边/上边 second_child: 右边/下边
 yabai -m config window_placement             second_child
 
 # 配置窗口边框
-# 作者在 6.0 把窗口边框删除了tmd：https://github.com/koekeishiya/yabai/issues/1889
+# 作者在 6.0 把窗口边框删除了tmd：Removal of window borders · Issue #1889 · asmvik/yabai
+# 有大佬支持了窗口颜色 https://github.com/FelixKratz/JankyBorders
+borders active_color=0xff0DA600 inactive_color=0xff494d64 width=5.0 blacklist="汽水音乐" &
 ## 是否绘制边框
 # yabai -m config window_border               on
 ## 高分辨率的情况下绘制边框
@@ -73,9 +78,13 @@ yabai -m config mouse_action2                resize
 # 不管理的应用
 yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
-yabai -m rule --add app="^系统偏好设置$" manage="off"
+yabai -m rule --add app="^系统设置$" manage="off"
+yabai -m rule --add app="^System Settings$" manage="off"
 yabai -m rule --add app="^访达$" manage="off"
 yabai -m rule --add app="^关于本机$" manage="off"
 yabai -m rule --add app="^Microsoft Outlook$" manage="off"
-yabai -m rule --add app="^如流$" manage="off"
-
+yabai -m rule --add app="^飞书$" manage="off"
+yabai -m rule --add app="^飞连$" manage="off"
+# yabai -m rule --add app="^Arc$" manage="off"
+yabai -m rule --add app="^飞书会议$" manage="off"
+yabai -m rule --add app="^钥匙串访问$" manage="off"
