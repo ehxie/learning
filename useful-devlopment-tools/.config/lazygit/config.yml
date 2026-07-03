@@ -1,0 +1,24 @@
+customCommands:
+  - key: "N"
+    description: "New worktree from remote branch"
+    command: >-
+      git worktree add -b "{{.Form.NewBranch}}"
+      "$HOME/worktree/$(basename $(git rev-parse --show-toplevel))-$(echo '{{.Form.NewBranch}}' | tr '/' '-')"
+      "{{.SelectedRemote.Name}}/{{.SelectedRemoteBranch.Name}}"
+    context: "remoteBranches"
+    prompts:
+      - type: "input"
+        title: "New branch name:"
+        key: "NewBranch"
+        initialValue: "{{.SelectedRemoteBranch.Name}}"
+  - key: "W"
+    description: "New worktree & branch from local branch"
+    command: >-
+      git worktree add -b "{{.Form.NewBranch}}"
+      "$HOME/worktree/$(basename $(git rev-parse --show-toplevel))-$(echo '{{.Form.NewBranch}}' | tr '/' '-')"
+      "{{.SelectedLocalBranch.Name}}"
+    context: "localBranches"
+    prompts:
+      - type: "input"
+        title: "New branch name:"
+        key: "NewBranch"
