@@ -1,63 +1,200 @@
-
 // Place your key bindings in this file to override the defaults
 [
   // 新建文件
   {
-      "key": "a",
-      "command": "explorer.newFile",
-      "when": "filesExplorerFocus && !inputFocus"
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
   },
   // 新建文件夹
   {
-      "key": "shift+a",
-      "command": "explorer.newFolder",
-      "when": "filesExplorerFocus && !inputFocus"
+    "key": "shift+a",
+    "command": "explorer.newFolder",
+    "when": "filesExplorerFocus && !inputFocus"
   },
   // 重命名
   {
-      "key": "r",
-      "command": "renameFile",
-      "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    "key": "r",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
   // 删除文件
   {
-      "key": "d",
-      "command": "deleteFile",
-      "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    "key": "d",
+    "command": "deleteFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
   // 剪切文件或目录
   {
-      "key": "x",
-      "command": "filesExplorer.cut",
-      "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    "key": "x",
+    "command": "filesExplorer.cut",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
   // 复制文件或目录
   {
-      "key": "y",
-      "command": "filesExplorer.copy",
-      "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+    "key": "y",
+    "command": "filesExplorer.copy",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
   },
   // 粘贴文件或目录
   {
-      "key": "p",
-      "command": "filesExplorer.paste",
-      "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    //  "ctrl+h": Focuses on the left editor group when the text editor is focused, Vim extension is active, and Vim is not in Insert mode.
+    "key": "ctrl+h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    // "ctrl+l": Focuses on the right editor group when the text editor is focused, Vim extension is active, and Vim is not in Insert mode.
+    "key": "ctrl+l",
+    "command": "workbench.action.focusRightGroup",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    // "ctrl+k": Focuses on the editor group above the current one when the text editor is focused, Vim extension is active, and Vim is not in Insert mode.
+    "key": "ctrl+k",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    // "ctrl+j": Focuses on the editor group below the current one when the text editor is focused, Vim extension is active, and Vim is not in Insert mode.
+    "key": "ctrl+j",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
   // 光标在切割窗口快速移动
   {
-      "key": "ctrl+h",
-      "command": "workbench.action.navigateEditorGroups",
-      "args": {
-          "by": "left"
-      },
-      "when": "editorTextFocus"
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateEditorGroups",
+    "args": {
+      "by": "left"
+    },
+    "when": "editorTextFocus"
   },
   {
-      "key": "ctrl+l",
-      "command": "workbench.action.navigateEditorGroups",
-      "args": {
-          "by": "right"
-      },
-      "when": "editorTextFocus"
-  }
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateEditorGroups",
+    "args": {
+      "by": "right"
+    },
+    "when": "editorTextFocus"
+  },
+  // 清空控制台
+  {
+    "key": "cmd+k",
+    "command": "workbench.action.terminal.clear",
+    "when": "terminalFocus",
+    "args": {
+      "silent": true
+    }
+  },
+  // TODO: 同步到 github 配置
+  // quick fix 时候，快速切换到上一个
+  {
+    "key": "alt+u", // whatever you want here
+    "command": "selectPrevCodeAction", // for v1.71
+    "when": "codeActionMenuVisible"
+  },
+  // quick fix 时候，快速切换到下一个
+  {
+    "key": "alt+d", // whatever you want here
+    "command": "selectNextCodeAction", // for v1.71
+    "when": "codeActionMenuVisible"
+  },
+  // 代码补齐时候，快速切换到上一个
+  {
+    "key": "alt+u",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  // 代码补齐时候，快速切换到下一个
+  {
+    "key": "alt+d",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  // cmd + p 时候，快速切换到下一个
+  {
+    "key": "alt+d",
+    "command": "quickInput.next",
+    "when": "inQuickInput && quickInputType == 'quickPick'"
+  },
+  // cmd + p 时候，快速切换到上一个
+  {
+    "key": "alt+u",
+    "command": "quickInput.previous",
+    "when": "inQuickInput && quickInputType == 'quickPick'"
+  },
+  // 聚集在第一个选项卡中
+  {
+    "key": "cmd+e",
+    "command": "workbench.action.focusFirstEditorGroup"
+  },
+  // 打开一个新的终端
+  {
+    "key": "cmd+n",
+    "command": "workbench.action.terminal.newInActiveWorkspace",
+    "when": "terminalFocus"
+  },
+  // 关闭当前终端
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.kill",
+    // "command": "workbench.action.terminal.scrollToPreviousCommand",
+    "when": "terminalFocus"
+  },
+  // 滚动到缓冲区顶部
+  {
+    "key": "cmd+up",
+    "command": "workbench.action.terminal.scrollToTop",
+    "when": "terminalFocus"
+  },
+  // 滚动到缓冲区底部
+  {
+    "key": "cmd+down",
+    "command": "workbench.action.terminal.scrollToBottom",
+    "when": "terminalFocus"
+  },
+  // 切换到下一个 terminal
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  // 切换到上一个 terminal
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  // 切换到同组内下一个 terminal 面板
+  {
+    "key": "cmd+]",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  // 切换到同组内上一个 terminal 面板
+  {
+    "key": "cmd+[",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus"
+  },
+  // terminal 全屏/退出全屏
+  {
+    "key": "ctrl+cmd+f",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus"
+},
+{
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+        "text": "\u001b\r"
+    },
+    "when": "terminalFocus"
+}
 ]
