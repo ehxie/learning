@@ -4,18 +4,19 @@ sketchybar --remove '/.*/'
 
 # ========================================================
 # 核心栏设置
-# hidden=on 让 bar 背景窗口不可见，不拦截点击
-# item 放在 e 位置自动从 notch 右边缘开始排列
+# margin 让 bar 窗口仅占按钮区域宽度，不拦截两侧点击
+# 1512 宽屏幕: bar 窗口 312px 宽 (1512-1200)，居中
+# 调整 margin 适配你的屏幕宽度和按钮数量
 # ========================================================
 sketchybar --bar height=36 \
                  color=0x00000000 \
                  border_width=0 \
                  padding_left=0 \
                  padding_right=0 \
+                 margin=600 \
                  position=top \
                  y_offset=0 \
-                 topmost=on \
-                 hidden=on
+                 topmost=on
 
 # 动画设置：开启平滑动画，并在隐藏时继续更新
 sketchybar --default updates=on
