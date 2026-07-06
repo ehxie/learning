@@ -4,9 +4,6 @@ sketchybar --remove '/.*/'
 
 # ========================================================
 # 核心栏设置
-# margin 让 bar 窗口仅占按钮区域宽度，不拦截两侧点击
-# 1512 宽屏幕: bar 窗口 312px 宽 (1512-1200)，居中
-# 调整 margin 适配你的屏幕宽度和按钮数量
 # ========================================================
 sketchybar --bar height=36 \
                  color=0x00000000 \
@@ -18,29 +15,38 @@ sketchybar --bar height=36 \
                  y_offset=0 \
                  topmost=on
 
-# 动画设置：开启平滑动画，并在隐藏时继续更新
 sketchybar --default updates=on
 
 # 全局默认样式
+# label 用小号粗体，靠负 padding_left 叠回图标区，靠 padding_right 与右框留白
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
 sketchybar --default background.corner_radius=6 \
                      background.height=24 \
                      icon.padding_left=8 \
                      icon.padding_right=8 \
-                     label.padding_left=0 \
-                     label.padding_right=0 \
+                     label.padding_left=-8 \
+                     label.padding_right=2 \
                      padding_left=4 \
                      padding_right=4 \
                      icon.font="sketchybar-app-font:Regular:16.0" \
-                     label.drawing=off
+                     label.font="SF Pro:Bold:9.0" \
+                     label.y_offset=7 \
+                     label.drawing=on
+
+# ========================================================
+# 显示器热插拔监听：插拔外接屏后自动重建桌面指示器
+# 否则拔屏后原本绑在外接屏的桌面会被丢到屏幕外而消失
+# ========================================================
+sketchybar --add item display_listener e \
+           --set display_listener drawing=off \
+                                  script="$PLUGIN_DIR/display_change.sh" \
+           --subscribe display_listener display_change
 
 # ========================================================
 # 桌面指示器 (Space Indicators) - 适配多显示器
 # ========================================================
-# 注册自定义事件，用于接收 yabai 的窗口变动信号
 sketchybar --add event window_change
 
-# 动态获取所有桌面及其对应的显示器，并创建对应的胶囊
 yabai -m query --spaces | jq -r '.[] | "\(.index) \(.display)"' | while read -r sid did; do
   sketchybar --add space space.$sid e \
              --set space.$sid space=$sid \
@@ -51,5 +57,12 @@ yabai -m query --spaces | jq -r '.[] | "\(.index) \(.display)"' | while read -r 
                                     window_change \
                                     front_app_switched
 done
+
+# 记录本次加载时的 space->display 布局签名。
+# display_change.sh 用它做守卫：reload 触发的 display_change 会看到签名一致而不再 reload，
+# 从而避免 reload <-> display_change 的死循环。
+yabai -m query --spaces 2>/dev/null \
+  | jq -r '[.[] | "\(.index):\(.display)"] | join(",")' \
+  > /tmp/sketchybar_display_sig
 
 sketchybar --update
